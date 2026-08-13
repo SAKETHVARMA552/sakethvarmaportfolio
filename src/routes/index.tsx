@@ -1,24 +1,58 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { LiveBackground } from "@/components/portfolio/LiveBackground";
+import { PremiumCursor } from "@/components/portfolio/PremiumCursor";
+import { Navbar } from "@/components/portfolio/Navbar";
+import { Hero } from "@/components/portfolio/Hero";
+import { About } from "@/components/portfolio/About";
+import { Skills } from "@/components/portfolio/Skills";
+import { Projects } from "@/components/portfolio/Projects";
+import { Experience } from "@/components/portfolio/Experience";
+import { Achievements } from "@/components/portfolio/Achievements";
+import { Certificates } from "@/components/portfolio/Certificates";
+import { Contact } from "@/components/portfolio/Contact";
+import { Divider } from "@/components/portfolio/primitives";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const title = "Budde Saketh Varma — Software Engineer, Full Stack & AI/ML";
+const description =
+  "Portfolio of Budde Saketh Varma: full-stack engineering with React, Node.js and PostgreSQL, machine learning with Python and Scikit-learn, verified internships and credentials.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "profile" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <LiveBackground />
+      <PremiumCursor />
+      <Navbar />
+      <main>
+        <Hero />
+        <Divider />
+        <About />
+        <Divider />
+        <Skills />
+        <Divider />
+        <Projects />
+        <Divider />
+        <Experience />
+        <Divider />
+        <Achievements />
+        <Divider />
+        <Certificates />
+        <Divider />
+        <Contact />
+      </main>
+    </>
   );
 }
