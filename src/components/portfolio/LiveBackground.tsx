@@ -75,7 +75,7 @@ export function LiveBackground() {
       vy: -(Math.random() * 0.14 + 0.03),
       a: Math.random() * 0.35 + 0.12,
       phase: Math.random() * Math.PI * 2,
-      c: colors[Math.floor(Math.random() * colors.length)],
+      c: colors[Math.floor(Math.random() * colors.length)]!,
     }));
 
     let raf = 0;
