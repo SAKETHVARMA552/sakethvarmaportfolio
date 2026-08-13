@@ -91,16 +91,18 @@ export function LiveBackground() {
       // faint connection lines between close particles (desktop only)
       if (!isMobile) {
         for (let i = 0; i < particles.length; i++) {
+          const a = particles[i]!;
           for (let j = i + 1; j < particles.length; j++) {
-            const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
+            const b = particles[j]!;
+            const dx = a.x - b.x;
+            const dy = a.y - b.y;
             const d2 = dx * dx + dy * dy;
             if (d2 < 16000) {
               ctx.strokeStyle = `rgba(140,160,255,${(1 - d2 / 16000) * 0.05})`;
               ctx.lineWidth = 1;
               ctx.beginPath();
-              ctx.moveTo(particles[i].x, particles[i].y);
-              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
               ctx.stroke();
             }
           }
